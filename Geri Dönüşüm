@@ -1,0 +1,54 @@
+import discord
+import random
+
+# ayricaliklar (intents) değişkeni botun ayrıcalıklarını depolayacak
+intents = discord.Intents.default()
+# Mesajları okuma ayrıcalığını etkinleştirelim
+intents.message_content = True
+# client (istemci) değişkeniyle bir bot oluşturalım ve ayrıcalıkları ona aktaralım
+client = discord.Client(intents=intents)
+
+@client.event
+async def on_ready():
+    print(f'{client.user} olarak giriş yaptık.')
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('$gazete geri dönüşüm'):
+        await message.channel.send("Kağıt kutusuna atılır.")
+    elif message.content.startswith('$karton geri dönüşüm'):
+        await message.channel.send("Kağıt kutusuna atılır.")
+    elif message.content.startswith('$kitap geri dönüşüm'):
+        await message.channel.send("Kağıt kutusuna atılır.")
+    elif message.content.startswith('$gazete geri dönüşüm'):
+        await message.channel.send("Kağıt kutusuna atılır.")
+    elif message.content.startswith('$gazoz şişe geri dönüşüm'):
+        await message.channel.send("Cam kutusuna atılır.")
+    elif message.content.startswith('$kavanoz geri dönüşüm'):
+        await message.channel.send("Cam kutusuna atılır.")
+    elif message.content.startswith('$plastik şişe geri dönüşüm'):
+        await message.channel.send("Plastik kutusuna atılır.")
+    elif message.content.startswith('$paket lastik geri dönüşüm'):
+        await message.channel.send("Plastik kutusuna atılır.")
+    elif message.content.startswith('$yemek atıkları geri dönüşüm'):
+        await message.channel.send("evsel atık kutusuna atılır.")
+    elif message.content.startswith('$yemek yağı geri dönüşüm'):
+        await message.channel.send("evsel atık kutusuna atılır.")
+    elif message.content.startswith('$karton değerlendirme'):
+        await message.channel.send("Bir karton kutuyu değerlendirmek istiyorsan evde bu karton kutunun içerisine katılmayı bekleyen herhangi bir şeyi koya bilirsin sıvı hariç tabiki yoksa karton eriye bilir. Bunun dışında eğer elinde sadece bir veya birden fazla karton varsa internette bu kartonu kullana bileceğin fikirlere baka bilirsin, pek çok kişi bu karton ile kutu, telefon tutacağı, kalemlik veya eğerki çok ileri gitmek istersen küçük bir sehpa bile yapabilirsin hatta bir kitaplık bile, veyatta küçük figürlerde yapabilirsin senin için fikir bulabileceğin bir pinterest listesini buraya bırakıyorum!! https://tr.pinterest.com/semrayilmazoglu/karton-kutu-değerlendirme/")
+    elif message.content.startswith('$cam değerlendirme'):
+        await message.channel.send("Camı değerlendirme işi biraz tehlikeli özellikle eğerki kırıksa eğerki cam kırık ise güvenlik açısından camı iki poşet veya karton bir kutunun içerisine koyun, bunu yaptıktan sonra en yakın geri dönüşüme atın hangi geri dönüşüme atacağınızı bilmiyorsanız bota '$cam geri dönüşüm' yazın. Bunun dışında cam bir kutuyu veya cam bir şişenin içine herhangi birşey katıp saklaya bilirsiniz.  Bir cam geri dönüştürüldüğünde : yemek kavanozları, içecek şişeleri, kozmetik ambalajlar vb. olabilir.")
+    elif message.content.startswith('$plastikleri değerlendirme'):
+        await message.channel.send("plastikleri değerlendirmede şişe veya kutu değilse geri dönüşüme atılmalıdır. Camın hangi geri dönüşüme atılacağını bilmiyorsanız '$plastik geri dönüşüm' yazın.")
+    elif message.content.startswith('$merhaba'):
+        await message.channel.send("Selam!")
+    elif message.content.startswith('$bye'):
+        await message.channel.send("\\U0001f642")
+    elif message.content.startswith('$Sa'):
+        await message.channel.send("As")
+    else:
+        await message.channel.send(message.content)
+
+client.run("Gizli tokeninizi buraya yazın")
